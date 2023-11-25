@@ -26,6 +26,7 @@ function getInput(e){
             role = "Trainee"
         }
     let data = {
+        // id : 
         name : name,
         doctor_id : doctor_type,
         specialization : specialization,
@@ -51,7 +52,7 @@ function showData(){
     tbody.innerText = ""
     let doctorData = localStorage.getItem("doctors")
     doctorData = doctorData ? JSON.parse(doctorData):[]
-    doctorData.forEach(el => {
+    doctorData.forEach((el,ind) => {
         let tr = document.createElement("tr")
         let td1 = document.createElement("td")
         let td2 = document.createElement("td")
@@ -64,7 +65,10 @@ function showData(){
         td8.setAttribute("class","btnDeleteBox")
         let btnDelete = document.createElement("button") 
         btnDelete.setAttribute("class","btnDelete")
-        btnDelete.innerText = "Delete"       
+        btnDelete.innerText = "Delete" 
+        btnDelete.addEventListener("click",()=>{
+            deleteRow(ind)
+        })      
         td1.innerText = el.name
         td2.innerText = el.doctor_id
         td3.innerText = el.specialization
@@ -76,5 +80,15 @@ function showData(){
         tr.append(td1,td2,td3,td4,td5,td6,td7,td8)
         tbody.append(tr)
     });
+}
+
+function deleteRow(index){
+    let doctorData = localStorage.getItem("doctors")
+    // console.log(doctorData);
+    doctorData = doctorData ? JSON.parse(doctorData):[]
+    doctorData = doctorData.filter((item,ind)=>ind!==index)
+    // console.log(doctorData);
+    localStorage.setItem("doctors",JSON.stringify(doctorData))  
+    showData()  
 }
 
