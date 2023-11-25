@@ -5,6 +5,7 @@
 body{
     display: flex;
     justify-content: space-around;
+    align-items: self-start;
     padding: 10% 5%;
 }
 form{
@@ -32,19 +33,27 @@ form input[type="submit"]{
 }
 table{
     border-collapse: collapse;
+    
 }
 table thead{
     background-color: rgb(68, 112, 195);
+
 }
 th{
     padding: 5px 10px;
     color: white;
     border: 1px solid #ccb;
 }
+tr{
+    
+    height: 50px;
+    color: red;
+}
 td{
     padding: 5px 10px;
     border: 1px solid #b0aeae;
 }
+
 .btnDelete{
     border: none;
     background-color: transparent;
